@@ -18,6 +18,10 @@ body {
   justify-content: center;
 }
 
+.game, .content {
+  height: 100%
+}
+
 .content .head {
   text-align: center;
   padding: 3rem 0 2rem;
@@ -50,4 +54,30 @@ body {
 }
 .blue {
   background-color: blue;
+}
+
+.animated-button {
+  animation: button-clicked .1s;
+}
+
+
+@keyframes button-clicked {
+  50% {
+    background-color: #000;
+    box-shadow: 1px 1px 10px #000;
+  }
+  100% {
+    background-color: inherit;
+    box-shadow: inherit;
+  }
+}
+
+
+@keyframes false-choice {
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: red;
+  }
 }

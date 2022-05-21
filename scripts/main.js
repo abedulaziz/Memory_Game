@@ -14,7 +14,9 @@ Steps:
 */
 
 
-const buttons = document.getElementsByClassName("button"),
+const buttsContainers = document.querySelectorAll("buttons .but-wrapper"),
+    buttons = document.getElementsByClassName("button"),
+    gameBackground = document.querySelector(".content")
     header = document.getElementById("gameHeader");
 
 
@@ -33,28 +35,57 @@ function startGame() {
   var clicksOrder = [],
       level = 1;
 
+  header.innerText = "Level " + level;
+
   clicksLoop()
 
   function clicksLoop() {
 
-    randomBut = Math.floor(Math.random() * 4);
-    clicksOrder.push(randomBut)
-    sounds[randomBut].play()
-
-    numOfClicks = 0
+    if (level <= 10) {
+      header.innerText = "Level " + level
+      randomNum = Math.floor(Math.random() * 4);
+      clicksOrder.push(randomNum)
+      console.log(clicksOrder) // I kept this expression just to simplify your debugging. It prints the array of choices
   
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener("click", trueGuess)
+      // this is just a hack for CSS animation to work more than one time ------- 
+      var targetButton = buttons[randomNum],
+          parent = targetButton.parentElement;
+      parent.removeChild(targetButton)
+      parent.appendChild(targetButton)
+      // ------------------------------------------------------------------------
+  
+      buttons[randomNum].classList.add("animated-button")
+      sounds[randomNum].play()
+  
+      numOfClicks = 0
+    
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", isTrueGuess)
+      }
     }
+    else {
+      header.innerText = "You won"
+      document.addEventListener('keydown', startGame);
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].removeEventListener("click", isTrueGuess)
+      }
+
+    }
+
   }
   
-  function trueGuess() {
+  function isTrueGuess() {
+
+    // same previous hack
+    var parent = this.parentElement;
+    parent.removeChild(this)
+    parent.appendChild(this)
+
 
     sounds[parseInt(this.dataset.random_num)].play();
     cloneQueue = JSON.parse(JSON.stringify(clicksOrder));
     
     if (parseInt(this.dataset.random_num) === cloneQueue[numOfClicks]) {
-      console.log("true")
       numOfClicks++
       
       if (numOfClicks === level) {
@@ -63,9 +94,13 @@ function startGame() {
       }
     }
     else {
+      gameBackground.parentElement.removeChild(gameBackground)
+      document.querySelector(".game").append(gameBackground)
+      
+      gameBackground.style.animation = "false-choice .3s"
 
       for (let i = 0; i < buttons.length; i++) {
-        buttons[i].removeEventListener("click", trueGuess)
+        buttons[i].removeEventListener("click", isTrueGuess)
       }
       header.innerText = "Game Over, Press Any Key to Restart"
 
