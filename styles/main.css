@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  background-color: rgb(13, 22, 40);
+  color: #FFF;
+}
+
+.container {
+  padding-left: 8vw;
+  padding-right: 8vw;
+  display: flex;
+  justify-content: center;
+}
+
+.content .head {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+.content .buttons{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 620px;
+}
+
+.content .buttons .button {
+  width: 250px;
+  height: 250px;
+  margin: 30px;
+  border: 7px solid #000;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+.yellow {
+  background-color: yellow;
+}
+.blue {
+  background-color: blue;
+}

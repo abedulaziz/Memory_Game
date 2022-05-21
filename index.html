@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- google fonts (Press Start 2P) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+  <!-- normalize CSS file -->
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Memory Game</title>
+</head>
+<body>
+  <div class="game">
+    <div class="content">
+      
+      <div class="head"><h1 id="gameHeader">Press Any Key to Start</h1></div>
+      
+      <div class="container">
+        <div class="buttons">
+  
+          <div class="green button" data-random_num="0" data-sound="assets/sounds/green.mp3"></div>
+          <div class="red button" data-random_num="1" data-sound="assets/sounds/red.mp3"></div>
+          <div class="yellow button" data-random_num="2" data-sound="assets/sounds/yellow.mp3"></div>
+          <div class="blue button" data-random_num="3" data-sound="assets/sounds/blue.mp3"></div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
