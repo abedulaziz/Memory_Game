@@ -81,3 +81,16 @@ body {
     background-color: red;
   }
 }
+
+/* media queries */
+
+@media screen and (max-width: 740px) {
+  .game .content .buttons {
+    width: 360px;
+  }
+  .game .content .buttons .button {
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+  }
+}
