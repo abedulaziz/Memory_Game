@@ -115,6 +115,3 @@ function startGame() {
     }
   }
 }
-
-
-console.log(isTrueGuess)
