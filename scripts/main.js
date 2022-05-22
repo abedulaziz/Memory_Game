@@ -90,7 +90,10 @@ function startGame() {
       
       if (numOfClicks === level) {
         level++
-        buttsRemoveClickEv() // remove click event from buttons while recreating new random number to not ruin the process
+
+        for (let i = 0; i < buttons.length; i++) { // remove click event from buttons while recreating new random number to not ruin the process
+          buttons[i].removeEventListener("click", isTrueGuess)
+        }
         setTimeout(clicksLoop, 1000) // wai a second and loop over the resursion function
       }
     }
@@ -102,19 +105,16 @@ function startGame() {
       document.querySelector(".game").append(gameBackground)
       
       gameBackground.style.animation = "false-choice .3s"
-      buttsRemoveClickEv()
-      header.innerText = "Game Over, Press Any Key to Restart"
 
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].removeEventListener("click", isTrueGuess)
+      }
+      header.innerText = "Game Over, Press Any Key to Restart"
       sounds[4].play()
       document.addEventListener('keydown', startGame);
     }
-
   }
 }
 
-// function remove click event from buttons
-function buttsRemoveClickEv() {
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].removeEventListener("click", isTrueGuess)
-  }
-}
+
+console.log(isTrueGuess)
